@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Todo</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Todo App</h1>
+
+        <form class="up" method="POST">
+            <input type="text" placeholder="Enter Todo" name="todo">
+            <button type="submit">Save</button>
+        </form>
+
+        {% for todo in todos %}
+            <div class="todo">
+                <p>{{todo.text}}</p>
+                {% if todo.is_done == 1 %}
+                    <p class="done">DONE</p>
+                {% endif %}
+                <small>Date : {{todo.created_at}}</small>
+                <div class="btns">
+                    <a href="?del={{todo.Todo_id}}" style="color: crimson;">Delete</a>
+                    <a href="?done={{todo.Todo_id}}" style="color: blue;">Done</a>
+                </div>
+            </div>
+        {% endfor %}
+  
+
+    </div>
+
+</body>
+</html>
